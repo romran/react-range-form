@@ -1,19 +1,25 @@
 {
-  "name": "react-ui",
+  "name": "range",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "^1.1.0"
-  },
+  "homepage": "https://romran.github.io/react-range-form",
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "final-form": "^4.4.0",
+    "rc-tooltip": "^3.7.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-final-form": "^3.1.5",
+    "react-final-form-listeners": "^1.0.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^3.7.2",
+    "redux-duck": "^1.0.2",
+    "styled-components": "^3.2.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }
