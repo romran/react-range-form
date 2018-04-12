@@ -38,7 +38,7 @@ export default class Wizard extends React.Component {
     setTimeout(() => {
       this.setState(state => ({
         page: 0,
-        values: { creditAmount: '500', yourIncome: '245', spouseIncome: "0", creditPerson: 'alone', debt: "noDebt", consumerCreditDebt: "0", housingFinanceDebt: "0", leasingDebt: "0", monthlySubscriptionDebt: "0" }
+        values: { RequestedLoanAmount: '500', NetMonthlyIncome: '245', SpouseNetMonthlyIncome: "0", CreditFor: 'Person', Debt: "noDebt", AmountOfConsumerProducts: "0", AmountOfHousingProducts: "0", AmountOfLeasingProducts: "0", MonthlyObligationsPayment: "0" }
       }))
     }, 500)
 
@@ -102,7 +102,7 @@ export default class Wizard extends React.Component {
                       <h3>Pageidaujama paskolos suma</h3>
                     </div>
                     <div className="value">
-                      <h3>{values.creditAmount} Eur</h3>
+                      <h3>{values.RequestedLoanAmount} Eur</h3>
                     </div>
                   </div>
 
@@ -111,60 +111,60 @@ export default class Wizard extends React.Component {
                       <h3>Jūsų grynosios mėnesio pajamos</h3>
                     </div>
                     <div className="value">
-                      <h3>{values.yourIncome} Eur/mėn</h3>
+                      <h3>{values.NetMonthlyIncome} Eur/mėn</h3>
                     </div>
                   </div>
-                  {values.creditPerson === "together" && (
+                  {values.CreditFor === "Family" && (
                     <div className="row">
                       <div className="key">
                         <h3>Sutuoktinio (bendraskolio) grynosios mėnesio pajamos</h3>
                       </div>
                       <div className="value">
-                        <h3>{values.spouseIncome} Eur/mėn</h3>
+                        <h3>{values.SpouseNetMonthlyIncome} Eur/mėn</h3>
                       </div>
                     </div>
                   )}
 
-                  {values.debt === "isDebt" && values.consumerCreditDebt !== "0" && (
+                  {values.Debt === "isDebt" && values.AmountOfConsumerProducts !== "0" && (
                     <div className="row">
                       <div className="key">
                         <h3>Likusi grąžinti vartojimo kreditų suma</h3>
                       </div>
                       <div className="value">
-                        <h3>{values.consumerCreditDebt} Eur</h3>
+                        <h3>{values.AmountOfConsumerProducts} Eur</h3>
                       </div>
                     </div>
                   )}
 
-                  {values.debt === "isDebt" && values.housingFinanceDebt !== "0" && (
+                  {values.Debt === "isDebt" && values.AmountOfHousingProducts !== "0" && (
                     <div className="row">
                       <div className="key">
                         <h3>Likusi grąžinti būsto finansavimo suma</h3>
                       </div>
                       <div className="value">
-                        <h3>{values.housingFinanceDebt} Eur</h3>
+                        <h3>{values.AmountOfHousingProducts} Eur</h3>
                       </div>
                     </div>
                   )}
 
-                  {values.debt === "isDebt" && values.leasingDebt !== "0" && (
+                  {values.Debt === "isDebt" && values.AmountOfLeasingProducts !== "0" && (
                     <div className="row">
                       <div className="key">
                         <h3>Likusi grąžinti finansavimo pagal lizingo sutartį (-is) suma</h3>
                       </div>
                       <div className="value">
-                        <h3>{values.leasingDebt} Eur</h3>
+                        <h3>{values.AmountOfLeasingProducts} Eur</h3>
                       </div>
                     </div>
                   )}
 
-                  {values.debt === "isDebt" && (
+                  {values.Debt === "isDebt" && (
                     <div className="row">
                       <div className="key">
                         <h3>Paminėtų finansinių įsipareigojimų mėnesio įmokų suma</h3>
                       </div>
                       <div className="value">
-                        <h3>{values.monthlySubscriptionDebt} Eur/mėn</h3>
+                        <h3>{values.MonthlyObligationsPayment} Eur/mėn</h3>
                       </div>
                     </div>
                   )}

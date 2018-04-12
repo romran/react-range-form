@@ -46,7 +46,7 @@ const App = () => (
         <Styles>
             <h1 className="title">Vartojimo paskolos ir kredito linijos skaičiuoklė</h1>
             <Wizard
-                initialValues={{ creditAmount: '500', yourIncome: '245', spouseIncome: "0", creditPerson: 'alone', debt: "noDebt", consumerCreditDebt: "0", housingFinanceDebt: "0", leasingDebt: "0", monthlySubscriptionDebt: "0" }}
+                initialValues={{ RequestedLoanAmount: '500', NetMonthlyIncome: '245', SpouseNetMonthlyIncome: "0", CreditFor: 'Person', Debt: "noDebt", AmountOfConsumerProducts: "0", AmountOfHousingProducts: "0", AmountOfLeasingProducts: "0", MonthlyObligationsPayment: "0" }}
                 onSubmit={onSubmit}
             >
                 <Wizard.Page>
@@ -63,13 +63,13 @@ const App = () => (
 
                             <div className="step-range-container">
                                 <div className="range-slider-container">
-                                    <Field name="creditAmount" component="input" step="500" type="range" min="500" max="20000" />
-                                    <RangeSlider valueName="creditAmount" minValue={500} maxValue={20000} form="creditCounter" />
+                                    <Field name="RequestedLoanAmount" component="input" step="500" type="range" min="500" max="20000" />
+                                    <RangeSlider valueName="RequestedLoanAmount" minValue={500} maxValue={20000} form="creditCounter" />
                                 </div>
                             </div>
 
                             <div className="step-text-container">
-                                <Field className="cur-value" name="creditAmount" component="input" type="number" min={500} max={20000} required />
+                                <Field className="cur-value" name="RequestedLoanAmount" component="input" type="number" min={500} max={20000} required />
                                 <label className="label">Eur</label>
                             </div>
                         </div>
@@ -82,12 +82,12 @@ const App = () => (
                             <div className="step-radio-container">
                                 <label className="label">
                                     <Field
-                                        name="creditPerson" component="input" type="radio" value="alone"
+                                        name="CreditFor" component="input" type="radio" value="Person"
                                     />{' '}
                                     Vienas
                             </label>
                                 <label className="label">
-                                    <Field name="creditPerson" component="input" type="radio" value="together" />
+                                    <Field name="CreditFor" component="input" type="radio" value="Family" />
                                     {' '}
                                     Su sutuoktiniu (bendraskoliu)
                             </label>
@@ -108,18 +108,18 @@ const App = () => (
 
                             <div className="step-range-container">
                                 <div className="range-slider-container">
-                                    <Field name="yourIncome" component="input" step="1" type="range" min="245" max="3000" />
-                                    <RangeSlider valueName="yourIncome" minValue={245} maxValue={3000} form="creditCounter" />
+                                    <Field name="NetMonthlyIncome" component="input" step="1" type="range" min="245" max="3000" />
+                                    <RangeSlider valueName="NetMonthlyIncome" minValue={245} maxValue={3000} form="creditCounter" />
                                 </div>
                             </div>
 
                             <div className="step-text-container month">
-                                <Field className="cur-value" name="yourIncome" component="input" type="number" min={245} max={3000} required />
+                                <Field className="cur-value" name="NetMonthlyIncome" component="input" type="number" min={245} max={3000} required />
                                 <label className="label">Eur/mėn</label>
                             </div>
                         </div>
 
-                        <Condition when="creditPerson" is="together">
+                        <Condition when="CreditFor" is="Family">
                             <div className="step-range">
                                 <div className="step-input-title-container range">
                                     <Tip classTitle={"tip right"} overlay={"Jei esate vedęs (ištekėjusi), tačiau bendraskolis yra ne jūsų sutuoktinis, o kitas asmuo, nurodykite šio asmens pajamas (ne sutuoktinio)."} />
@@ -128,20 +128,20 @@ const App = () => (
 
                                 <div className="step-range-container">
                                     <div className="range-slider-container">
-                                        <Field name="spouseIncome" value="0" component="input" step="1" type="range" min="0" max="3000" />
-                                        <RangeSlider valueName="spouseIncome" minValue={0} maxValue={3000} form="creditCounter" />
+                                        <Field name="SpouseNetMonthlyIncome" value="0" component="input" step="1" type="range" min="0" max="3000" />
+                                        <RangeSlider valueName="SpouseNetMonthlyIncome" minValue={0} maxValue={3000} form="creditCounter" />
                                     </div>
                                 </div>
                                 <div className="step-text-container month">
-                                    <Field className="cur-value" name="spouseIncome" value="0" component="input" type="number" min={0} max={3000} required />
+                                    <Field className="cur-value" name="SpouseNetMonthlyIncome" value="0" component="input" type="number" min={0} max={3000} required />
                                     <label className="label">Eur/mėn</label>
                                 </div>
                             </div>
                         </Condition>
                         <WhenFieldChanges
-                            field="creditPerson"
-                            becomes={"alone"}
-                            set="spouseIncome"
+                            field="CreditFor"
+                            becomes={"Person"}
+                            set="SpouseNetMonthlyIncome"
                             to={"0"}
                         />
 
@@ -161,17 +161,17 @@ const App = () => (
                             <div className="step-radio-container up">
                                 <label className="label">
                                     <Field
-                                        name="debt" component="input" type="radio" value="noDebt" />{' '}
+                                        name="Debt" component="input" type="radio" value="noDebt" />{' '}
                                     Ne
                             </label>
                                 <label className="label">
-                                    <Field name="debt" component="input" type="radio" value="isDebt" />{' '}
+                                    <Field name="Debt" component="input" type="radio" value="isDebt" />{' '}
                                     Taip
                             </label>
                             </div>
                         </div>
 
-                        <Condition when="debt" is="isDebt">
+                        <Condition when="Debt" is="isDebt">
 
                             <div className="step-range">
                                 <div className="step-input-title-container range">
@@ -181,13 +181,13 @@ const App = () => (
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="consumerCreditDebt" component="input" step="1" type="range" min="0" max="30000" />
-                                        <RangeSlider valueName="consumerCreditDebt" minValue={0} maxValue={30000} form="creditCounter" />
+                                        <Field name="AmountOfConsumerProducts" component="input" step="1" type="range" min="0" max="30000" />
+                                        <RangeSlider valueName="AmountOfConsumerProducts" minValue={0} maxValue={30000} form="creditCounter" />
                                     </div>
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field className="cur-value" name="consumerCreditDebt" component="input" type="number" min={0} max={30000} required />
+                                    <Field className="cur-value" name="AmountOfConsumerProducts" component="input" type="number" min={0} max={30000} required />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -200,13 +200,13 @@ const App = () => (
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="housingFinanceDebt" component="input" step="1" type="range" min="0" max="870000" />
-                                        <RangeSlider valueName="housingFinanceDebt" minValue={0} maxValue={870000} form="creditCounter" />
+                                        <Field name="AmountOfHousingProducts" component="input" step="1" type="range" min="0" max="870000" />
+                                        <RangeSlider valueName="AmountOfHousingProducts" minValue={0} maxValue={870000} form="creditCounter" />
                                     </div>
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field className="cur-value" name="housingFinanceDebt" component="input" type="number" min={0} max={870000} required />
+                                    <Field className="cur-value" name="AmountOfHousingProducts" component="input" type="number" min={0} max={870000} required />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -219,13 +219,13 @@ const App = () => (
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="leasingDebt" component="input" step="1" type="range" min="0" max="145000" />
-                                        <RangeSlider valueName="leasingDebt" minValue={0} maxValue={145000} form="creditCounter" />
+                                        <Field name="AmountOfLeasingProducts" component="input" step="1" type="range" min="0" max="145000" />
+                                        <RangeSlider valueName="AmountOfLeasingProducts" minValue={0} maxValue={145000} form="creditCounter" />
                                     </div>
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field className="cur-value" name="leasingDebt" component="input" type="number" min={0} max={145000} required />
+                                    <Field className="cur-value" name="AmountOfLeasingProducts" component="input" type="number" min={0} max={145000} required />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -238,13 +238,13 @@ const App = () => (
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="monthlySubscriptionDebt" component="input" step="1" type="range" min="0" max="7000" />
-                                        <RangeSlider valueName="monthlySubscriptionDebt" minValue={0} maxValue={7000} form="creditCounter" />
+                                        <Field name="MonthlyObligationsPayment" component="input" step="1" type="range" min="0" max="7000" />
+                                        <RangeSlider valueName="MonthlyObligationsPayment" minValue={0} maxValue={7000} form="creditCounter" />
                                     </div>
                                 </div>
 
                                 <div className="step-text-container month up">
-                                    <Field className="cur-value" name="monthlySubscriptionDebt" component="input" type="number" min={0} max={7000} required />
+                                    <Field className="cur-value" name="MonthlyObligationsPayment" component="input" type="number" min={0} max={7000} required />
                                     <label className="label">Eur/mėn</label>
                                 </div>
                             </div>
@@ -252,27 +252,27 @@ const App = () => (
                         </Condition>
 
                         <WhenFieldChanges
-                            field="debt"
+                            field="Debt"
                             becomes={"noDebt"}
-                            set="consumerCreditDebt"
+                            set="AmountOfConsumerProducts"
                             to={"0"}
                         />
                         <WhenFieldChanges
-                            field="debt"
+                            field="Debt"
                             becomes={"noDebt"}
-                            set="housingFinanceDebt"
+                            set="AmountOfHousingProducts"
                             to={"0"}
                         />
                         <WhenFieldChanges
-                            field="debt"
+                            field="Debt"
                             becomes={"noDebt"}
-                            set="leasingDebt"
+                            set="AmountOfLeasingProducts"
                             to={"0"}
                         />
                         <WhenFieldChanges
-                            field="debt"
+                            field="Debt"
                             becomes={"noDebt"}
-                            set="monthlySubscriptionDebt"
+                            set="MonthlyObligationsPayment"
                             to={"0"}
                         />
                     </div>
