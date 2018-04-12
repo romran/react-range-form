@@ -14,8 +14,6 @@ const theme = {
   golden:'#fec202'
 }
 
-
-
 export default styled.div`
   font-family: Arial,sans-serif;
   padding: 15px;
@@ -42,6 +40,10 @@ export default styled.div`
       justify-content: flex-end;
     }
 
+    strong {
+      font-weight: 700;
+    }
+
   form {
     max-width: 750px;
     margin: 15px auto;
@@ -63,7 +65,7 @@ export default styled.div`
       @media (max-width: 735px) {
           padding-bottom: 5px;
           }
-      label {
+      .label {
         font-size: 15px;
         color: ${theme.brown};
         line-height: 20px;
@@ -310,17 +312,23 @@ export default styled.div`
             font-size: 15px;
             margin: 0 10px;
             color: ${theme.brown};
-            &.long {
-              
-            }
           }
           
-          >label {
+          input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+          }
+          
+          input[type="number"] {
+              -moz-appearance: textfield;
+          }
+
+          >.label {
             display:inline-block;
             width: 25px;
           }
           &.month {
-            >label {
+            >.label {
               @media (max-width: 735px) {
                 width: 60px;
               }
@@ -377,7 +385,7 @@ export default styled.div`
                 justify-content: space-around;
                 flex-wrap: wrap;
               }
-            >label {
+            >.label {
               padding: 0;
               display: flex;
               flex-direction: row;
