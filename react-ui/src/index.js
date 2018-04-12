@@ -33,8 +33,7 @@ const Error = ({ name }) => (
 const WhenFieldChanges = ({ field, becomes, set, to }) => (
     <Field name={set} subscription={{}}>
         {(
-            // No subscription. We only use Field to get to the change function
-            { input: { onChange } }
+             { input: { onChange } }
         ) => (
                 <OnChange name={field}>
                     {value => {
@@ -58,7 +57,9 @@ const normalizeInput = value => {
     if (!value) return value
     const onlyNums = value.match("^[0-9]+$")
 
-    if (onlyNums) {
+    return onlyNums;
+
+   /*  if (onlyNums) {
         const number = parseInt(onlyNums[0])
          if (number < 500) {
             console.log(number)
@@ -68,7 +69,7 @@ const normalizeInput = value => {
     }
     else {
         return 500;
-    }
+    } */
 }
 
 //const required = value => (value ? undefined : 'Required')
