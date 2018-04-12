@@ -319,8 +319,6 @@ const App = () => (
                         />
                     </div>
 
-
-
                 </Wizard.Page>
                 <Wizard.Page>
                     <div className="result-title">

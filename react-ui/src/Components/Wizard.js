@@ -42,13 +42,6 @@ export default class Wizard extends React.Component {
       }))
     }, 500)
 
-
-  /**
-  * NOTE: Both validate and handleSubmit switching are implemented
-  * here because 🏁 Redux Final Form does not accept changes to those
-  * functions once the form has been defined.
-  */
-
   validate = values => {
     const activePage = React.Children.toArray(this.props.children)[
       this.state.page
@@ -74,8 +67,6 @@ export default class Wizard extends React.Component {
     const activePage = React.Children.toArray(children)[page]
     const isLastPage = page === React.Children.count(children) - 1
 
-
-    // let arrayOfJsx = values.map(item => <div key={item} > I am {item} </div>
     return (
       <Form
         initialValues={values}
@@ -181,7 +172,7 @@ export default class Wizard extends React.Component {
                 </button>
 
                 </div>
-                
+
               </div>
               )}
             </div>

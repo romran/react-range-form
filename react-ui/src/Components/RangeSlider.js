@@ -26,8 +26,3 @@ RangeSlider.propTypes = {
   maxValue: PropTypes.number,
   minValue: PropTypes.number
 };
-
-
-/* {!isLastPage && (<div>
-  <div style={{ width: `${values.spouseIncome}px`, height: `5px`, backgroundColor: `blue` }}></div>
-</div>)} */
