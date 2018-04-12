@@ -21,7 +21,7 @@ const onSubmit = async values => {
 const WhenFieldChanges = ({ field, becomes, set, to }) => (
     <Field name={set} subscription={{}}>
         {(
-             { input: { onChange } }
+            { input: { onChange } }
         ) => (
                 <OnChange name={field}>
                     {value => {

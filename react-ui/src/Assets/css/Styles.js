@@ -1,4 +1,4 @@
-import styled  from 'styled-components'
+import styled from 'styled-components'
 import SliderThumb from '../Icons/oval.svg'
 import TipIcon from '../Icons/tip.svg'
 import RadioIconC from '../Icons/radio-checked.svg'
@@ -10,8 +10,8 @@ const theme = {
   brown: '#512b2b',
   borderGrey: '#e0e0e0',
   borderDarkGrey: '#acacac',
-  black:'#22222',
-  golden:'#fec202'
+  black: '#22222',
+  golden: '#fec202'
 }
 
 export default styled.div`
@@ -436,9 +436,9 @@ export default styled.div`
      }
 
      >.result-title {
-       font-size: 1.40em;
-       color: #222222;
-       line-height: 26px;
+      font-size: 1.40em;
+      color: #222222;
+      line-height: 26px;
       font-weight: 700;
       padding-bottom: 15px;
      }
