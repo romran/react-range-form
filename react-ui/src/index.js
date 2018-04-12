@@ -40,6 +40,32 @@ const Condition = ({ when, is, children }) => (
     </Field>
 );
 
+const normalizeInput = value => {
+    if (!value) return value
+    const onlyNums = value.replace(/^0+/, '')
+    return onlyNums
+}
+
+const MonthlyObligationsError = ({ name }) => (
+    <Field
+        name={name}
+        subscribe={{ touched: true, error: true }}
+        render={({ meta: { touched, error } }) =>
+            error ? <span className='error'>{error}</span> : null
+        }
+    />
+)
+
+const ProductsError = ({ name }) => (
+    <Field
+        name={name}
+        subscribe={{ error: true }}
+        render={({ meta: { error } }) =>
+            error ? <span className='error-border'>{error}</span> : null
+        }
+    />
+)
+
 const App = () => (
     <Provider store={store}>
 
@@ -49,7 +75,18 @@ const App = () => (
                 initialValues={{ RequestedLoanAmount: '500', NetMonthlyIncome: '245', SpouseNetMonthlyIncome: "0", CreditFor: 'Person', Debt: "noDebt", AmountOfConsumerProducts: "0", AmountOfHousingProducts: "0", AmountOfLeasingProducts: "0", MonthlyObligationsPayment: "0" }}
                 onSubmit={onSubmit}
             >
-                <Wizard.Page>
+                <Wizard.Page
+                    validate={values => {
+                        const errors = {}
+                        if (values.MonthlyObligationsPayment !== '0' && values.AmountOfConsumerProducts === '0' && values.AmountOfHousingProducts === '0' && values.AmountOfLeasingProducts === '0') {
+                            errors.MonthlyObligationsPayment = 'Įveskite bent vieną grąžintino finansinio įsipareigojimo sumą.'
+                        }
+                        if (values.MonthlyObligationsPayment === '0' && (values.AmountOfConsumerProducts !== '0' || values.AmountOfHousingProducts !== '0' || values.AmountOfLeasingProducts !== '0')) {
+                            errors.AmountOfConsumerProducts = ' '
+                        }
+                        return errors
+                    }}
+                >
                     <div className="step">
                         <div className="step-title">
                             <h2>Informacija apie jūsų pageidaujamą paskolą</h2>
@@ -69,7 +106,7 @@ const App = () => (
                             </div>
 
                             <div className="step-text-container">
-                                <Field className="cur-value" name="RequestedLoanAmount" component="input" type="number" min={500} max={20000} required />
+                                <Field parse={normalizeInput} className="cur-value" name="RequestedLoanAmount" component="input" type="number" min={500} max={20000} required />
                                 <label className="label">Eur</label>
                             </div>
                         </div>
@@ -114,7 +151,7 @@ const App = () => (
                             </div>
 
                             <div className="step-text-container month">
-                                <Field className="cur-value" name="NetMonthlyIncome" component="input" type="number" min={245} max={3000} required />
+                                <Field parse={normalizeInput} className="cur-value" name="NetMonthlyIncome" component="input" type="number" min={245} max={3000} required />
                                 <label className="label">Eur/mėn</label>
                             </div>
                         </div>
@@ -133,7 +170,7 @@ const App = () => (
                                     </div>
                                 </div>
                                 <div className="step-text-container month">
-                                    <Field className="cur-value" name="SpouseNetMonthlyIncome" value="0" component="input" type="number" min={0} max={3000} required />
+                                    <Field parse={normalizeInput} className="cur-value" name="SpouseNetMonthlyIncome" value="0" component="input" type="number" min={0} max={3000} required />
                                     <label className="label">Eur/mėn</label>
                                 </div>
                             </div>
@@ -187,7 +224,7 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field className="cur-value" name="AmountOfConsumerProducts" component="input" type="number" min={0} max={30000} required />
+                                    <Field parse={normalizeInput} className="cur-value" name="AmountOfConsumerProducts" component="input" type="number" min={0} max={30000} required />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -206,7 +243,7 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field className="cur-value" name="AmountOfHousingProducts" component="input" type="number" min={0} max={870000} required />
+                                    <Field parse={normalizeInput} className="cur-value" name="AmountOfHousingProducts" component="input" type="number" min={0} max={870000} required />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -225,7 +262,7 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field className="cur-value" name="AmountOfLeasingProducts" component="input" type="number" min={0} max={145000} required />
+                                    <Field parse={normalizeInput} className="cur-value" name="AmountOfLeasingProducts" component="input" type="number" min={0} max={145000} required />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -244,9 +281,14 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container month up">
-                                    <Field className="cur-value" name="MonthlyObligationsPayment" component="input" type="number" min={0} max={7000} required />
+                                    <Field parse={normalizeInput} className="cur-value" name="MonthlyObligationsPayment" component="input" type="number" min={0} max={7000} required />
                                     <label className="label">Eur/mėn</label>
-                                </div>
+                                    <ProductsError name="AmountOfConsumerProducts" />
+                                 </div>
+                            </div>
+
+                            <div className='errors-container'>
+                                <MonthlyObligationsError name="MonthlyObligationsPayment" />
                             </div>
 
                         </Condition>
@@ -277,9 +319,10 @@ const App = () => (
                         />
                     </div>
 
+
+
                 </Wizard.Page>
                 <Wizard.Page>
-
                     <div className="result-title">
                         <h2>Jūsų pateikta informacija:</h2>
                     </div>

@@ -295,6 +295,7 @@ export default styled.div`
           }
         }
           >.step-text-container {
+            position: relative;
             padding-right: 25px;
             order: 3;
               @media (max-width: 735px) {
@@ -515,6 +516,29 @@ export default styled.div`
       background: rgba(0, 0, 0, 0.1);
       box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
       padding: 20px;
+    }
+
+
+    .errors-container {
+      width: 100%;
+      .error {
+        font-size: 15px;
+        text-align: center;
+        padding: 15px 0;
+        color: ${theme.orange}
+      }
+    }
+
+    .error-border {
+      position: absolute;
+      top:-2px;
+      left: 7px;
+      border: 3px solid ${theme.orange};
+      background-color: ${theme.orange};
+      border-radius: 4px;
+      height: 34px;
+      width: 64px;
+      z-index: -1;
     }
   }
  
