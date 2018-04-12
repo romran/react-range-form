@@ -2,7 +2,7 @@
 
 A minimal example of using a Node backend (server for API, proxy, & routing) with a [React frontend](https://github.com/facebookincubator/create-react-app).
 
-[DEMO](https://ancient-hollows-45384.herokuapp.com/) 
+### [DEMO](https://ancient-hollows-45384.herokuapp.com/) 
 
 ## Design Points
 
