@@ -365,11 +365,17 @@ export default styled.div`
                 text-align: right;
                 width: 100%;
                 height: 100%;
+                font-weight: 700;
                 @media (max-width: 735px) {
                   width: fit-content;
                   text-align: center;
                   height: auto;
                 }
+              }
+              &.long-title {
+                  @media (max-width: 735px) {
+                  width: 100%;
+                 }
               }
             }
             >.step-radio-container {

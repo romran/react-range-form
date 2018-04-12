@@ -154,8 +154,8 @@ const App = () => (
                         </div>
 
                         <div className="step-radio">
-                            <div className="step-input-title-container radio">
-                                <label className="label long"><strong>Ar turite banke „Swedbank“ arba kitose kredito įstaigose paimtų ir dar negrąžintų paskolų arba esate tokių paskolų laiduotojas?</strong></label>
+                            <div className="step-input-title-container radio long-title">
+                                <label className="label long">Ar turite banke „Swedbank“ arba kitose kredito įstaigose paimtų ir dar negrąžintų paskolų arba esate tokių paskolų laiduotojas?</label>
                             </div>
 
                             <div className="step-radio-container up">
