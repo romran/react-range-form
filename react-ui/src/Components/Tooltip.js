@@ -16,7 +16,7 @@ class Tip extends Component {
                     offset: [-20, 3],
                 }}
             >
-                <a href="tooltip" className={classTitle}></a>
+                <a href="tip" className={classTitle}></a>
             </Tooltip>
         )
     }

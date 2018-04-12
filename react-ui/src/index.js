@@ -95,19 +95,19 @@ const App = () => (
                         <div className="step-range">
                             <div className="step-input-title-container range">
                                 <Tip classTitle={"tip"} overlay={"Nurodykite sumą, kurią norite pasiskolinti. Jei pageidaujama paskolos suma yra didesnė kaip 20 000 Eur, reikalingas nekilnojamojo turto užstatas."} />
-                                <label className="label">Pageidaujama paskolos suma</label>
+                                <label htmlFor="RequestedLoanAmount" className="label">Pageidaujama paskolos suma</label>
                             </div>
 
                             <div className="step-range-container">
                                 <div className="range-slider-container">
-                                    <Field name="RequestedLoanAmount" component="input" step="500" type="range" min="500" max="20000" />
+                                    <Field id="RequestedLoanAmount" name="RequestedLoanAmount" component="input" step="500" type="range" min="500" max="20000" />
                                     <RangeSlider valueName="RequestedLoanAmount" minValue={500} maxValue={20000} form="creditCounter" />
                                 </div>
                             </div>
 
                             <div className="step-text-container">
-                                <Field parse={normalizeInput} className="cur-value" name="RequestedLoanAmount" component="input" type="number" min={500} max={20000} required />
-                                <label className="label">Eur</label>
+                                <Field id="RequestedLoanAmountNumber" parse={normalizeInput} className="cur-value" name="RequestedLoanAmount" component="input" type="number" min={500} max={20000} required />
+                                <label htmlFor="RequestedLoanAmountNumber" className="label">Eur</label>
                             </div>
                         </div>
 
@@ -140,19 +140,19 @@ const App = () => (
                         <div className="step-range">
                             <div className="step-input-title-container range">
                                 <Tip classTitle={"tip"} overlay={"Prašome nurodyti oficialiai gaunamas pajamas atskaičius mokesčius."} />
-                                <label className="label">Jūsų grynosios mėnesio pajamos</label>
+                                <label htmlFor="NetMonthlyIncome" className="label">Jūsų grynosios mėnesio pajamos</label>
                             </div>
 
                             <div className="step-range-container">
                                 <div className="range-slider-container">
-                                    <Field name="NetMonthlyIncome" component="input" step="1" type="range" min="245" max="3000" />
+                                    <Field id="NetMonthlyIncome" name="NetMonthlyIncome" component="input" step="1" type="range" min="245" max="3000" />
                                     <RangeSlider valueName="NetMonthlyIncome" minValue={245} maxValue={3000} form="creditCounter" />
                                 </div>
                             </div>
 
                             <div className="step-text-container month">
-                                <Field parse={normalizeInput} className="cur-value" name="NetMonthlyIncome" component="input" type="number" min={245} max={3000} required />
-                                <label className="label">Eur/mėn</label>
+                                <Field id="NetMonthlyIncomeNumber" parse={normalizeInput} className="cur-value" name="NetMonthlyIncome" component="input" type="number" min={245} max={3000} required />
+                                <label htmlFor="NetMonthlyIncomeNumber" className="label">Eur/mėn</label>
                             </div>
                         </div>
 
@@ -160,12 +160,12 @@ const App = () => (
                             <div className="step-range">
                                 <div className="step-input-title-container range">
                                     <Tip classTitle={"tip right"} overlay={"Jei esate vedęs (ištekėjusi), tačiau bendraskolis yra ne jūsų sutuoktinis, o kitas asmuo, nurodykite šio asmens pajamas (ne sutuoktinio)."} />
-                                    <label className="label long">Sutuoktinio (bendraskolio) grynosios mėnesio pajamos</label>
+                                    <label htmlFor="SpouseNetMonthlyIncome" className="label long">Sutuoktinio (bendraskolio) grynosios mėnesio pajamos</label>
                                 </div>
 
                                 <div className="step-range-container">
                                     <div className="range-slider-container">
-                                        <Field name="SpouseNetMonthlyIncome" value="0" component="input" step="1" type="range" min="0" max="3000" />
+                                        <Field id="SpouseNetMonthlyIncome" name="SpouseNetMonthlyIncome" value="0" component="input" step="1" type="range" min="0" max="3000" />
                                         <RangeSlider valueName="SpouseNetMonthlyIncome" minValue={0} maxValue={3000} form="creditCounter" />
                                     </div>
                                 </div>
@@ -213,12 +213,12 @@ const App = () => (
                             <div className="step-range">
                                 <div className="step-input-title-container range">
                                     <Tip classTitle={"tip right margin"} overlay={"Prašome nurodyti bendrą kreditoriams (bankams, greitųjų kreditų bendrovėms, fiziniams ar juridiniams asmenims ir kt.) grąžintiną visų savo ir sutuoktinio (bendraskolio) paskolų, gautų neįkeitus turto, negrąžintos greitųjų paskolų dalies ir banko ar kredito kortelės sąskaitoje (-ose) suteiktų limitų sumą (nurodoma be palūkanų). Informaciją nurodoma ir tuo atveju, jeigu esate šių paskolų laiduotojas."} />
-                                    <label className="label long width">Likusi grąžinti <strong>vartojimo kreditų</strong> suma</label>
+                                    <label htmlFor="AmountOfConsumerProducts" className="label long width">Likusi grąžinti <strong>vartojimo kreditų</strong> suma</label>
                                 </div>
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="AmountOfConsumerProducts" component="input" step="1" type="range" min="0" max="30000" />
+                                        <Field id="AmountOfConsumerProducts" name="AmountOfConsumerProducts" component="input" step="1" type="range" min="0" max="30000" />
                                         <RangeSlider valueName="AmountOfConsumerProducts" minValue={0} maxValue={30000} form="creditCounter" />
                                     </div>
                                 </div>
@@ -232,12 +232,12 @@ const App = () => (
                             <div className="step-range">
                                 <div className="step-input-title-container range">
                                     <Tip classTitle={"tip right margin"} overlay={"Prašome nurodyti bendrą kreditoriams (bankams, greitųjų kreditų bendrovėms, fiziniams ar juridiniams asmenims ir kt.) grąžintiną visų savo ir sutuoktinio (bendraskolio) būsto paskolų, kitų paskolų, gautų įkeitus nekilnojamąjį turtą, sumą (nurodoma be palūkanų). Informaciją nurodoma ir tuo atveju, jeigu esate šių paskolų laiduotojas."} />
-                                    <label className="label long width">Likusi grąžinti <strong>būsto finansavimo</strong> suma</label>
+                                    <label htmlFor="AmountOfHousingProducts" className="label long width">Likusi grąžinti <strong>būsto finansavimo</strong> suma</label>
                                 </div>
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="AmountOfHousingProducts" component="input" step="1" type="range" min="0" max="870000" />
+                                        <Field id="AmountOfHousingProducts" name="AmountOfHousingProducts" component="input" step="1" type="range" min="0" max="870000" />
                                         <RangeSlider valueName="AmountOfHousingProducts" minValue={0} maxValue={870000} form="creditCounter" />
                                     </div>
                                 </div>
@@ -251,12 +251,12 @@ const App = () => (
                             <div className="step-range">
                                 <div className="step-input-title-container range">
                                     <Tip classTitle={"tip right margin"} overlay={"Prašome nurodyti bendrą sumą (nurodoma be palūkanų), kurią jūs su sutuoktiniu (bendraskoliu) turite grąžinti kreditoriams (bankams, greitųjų kreditų bendrovėms, fiziniams ar juridiniams asmenims ir kt.) už visas lizingo būdu įsigytas prekes (už išsimokėtinai pirktą (-us ) automobilį (-ius), namų apyvokos ir kitus daiktus). Informaciją nurodoma ir tuo atveju, jeigu esate šių paskolų laiduotojas."} />
-                                    <label className="label long width">Likusi grąžinti <strong>finansavimo pagal lizingo sutartį(-is)</strong> suma</label>
+                                    <label htmlFor="AmountOfLeasingProducts" className="label long width">Likusi grąžinti <strong>finansavimo pagal lizingo sutartį(-is)</strong> suma</label>
                                 </div>
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="AmountOfLeasingProducts" component="input" step="1" type="range" min="0" max="145000" />
+                                        <Field id="AmountOfLeasingProducts" name="AmountOfLeasingProducts" component="input" step="1" type="range" min="0" max="145000" />
                                         <RangeSlider valueName="AmountOfLeasingProducts" minValue={0} maxValue={145000} form="creditCounter" />
                                     </div>
                                 </div>
@@ -270,12 +270,12 @@ const App = () => (
                             <div className="step-range">
                                 <div className="step-input-title-container range">
                                     <Tip classTitle={"tip right margin"} overlay={"Prašome nurodyti bendrą sumą, kurią kas mėnesį turite mokėti visiems kreditoriams (bankams, greitųjų kreditų bendrovėms, fiziniams ar juridiniams asmenims ir kt.). Nurodoma suma su palūkanomis. Informaciją nurodoma ir tuo atveju, jeigu esate šių paskolų laiduotojas."} />
-                                    <label className="label long width">Paminėtų <strong>finansinių įsipareigojimų mėnesio</strong> įmokų suma</label>
+                                    <label htmlFor="MonthlyObligationsPayment" className="label long width">Paminėtų <strong>finansinių įsipareigojimų mėnesio</strong> įmokų suma</label>
                                 </div>
 
                                 <div className="step-range-container up">
                                     <div className="range-slider-container">
-                                        <Field name="MonthlyObligationsPayment" component="input" step="1" type="range" min="0" max="7000" />
+                                        <Field id="MonthlyObligationsPayment" name="MonthlyObligationsPayment" component="input" step="1" type="range" min="0" max="7000" />
                                         <RangeSlider valueName="MonthlyObligationsPayment" minValue={0} maxValue={7000} form="creditCounter" />
                                     </div>
                                 </div>
