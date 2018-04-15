@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const RangeSlider = ({ state, valueName, maxValue, minValue }) => (
   <span className="RangeSlider" style={{
-    width: `${100 - ( (state.values[valueName] - minValue) * 100 / (maxValue - minValue))}%`,
+    width: `${ state.values[valueName] >= minValue && state.values[valueName] <= maxValue ? 100 - ( (state.values[valueName] - minValue) * 100 / (maxValue - minValue)) : 100 }%`,
     position: `absolute`,
     right: `0`,
     zIndex: `0`,
