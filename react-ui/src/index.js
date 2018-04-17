@@ -9,7 +9,7 @@ import Tip from './Components/Tooltip.js'
 import { Provider } from 'react-redux'
 import store from './store'
 import RangeSlider from './Components/RangeSlider'
-import ConditionTitle from './Components/ConditionTitle'
+import ConditionalTitle from './Components/ConditionalTitle'
 
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
@@ -136,7 +136,7 @@ const App = () => (
 
                     <div className="step">
                         <div className="step-title">
-                            <ConditionTitle form="creditCounter"/>
+                            <ConditionalTitle form="creditCounter"/>
                             <Tip classTitle={"tip"} overlay={"Toliau prašome pateikti informaciją apie bendras savo ir bendraskolio pajamas."} />
                         </div>
                         <div className="step-range">
