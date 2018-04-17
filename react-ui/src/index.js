@@ -108,7 +108,18 @@ const App = () => (
                             </div>
 
                             <div className="step-text-container">
-                                <Field id="RequestedLoanAmountNumber" parse={normalizeInput} className="cur-value" name="RequestedLoanAmount" component="input" type="number" min={500} max={20000} required />
+                                <Field
+                                    id="RequestedLoanAmountNumber"
+                                    parse={normalizeInput}
+                                    className="cur-value"
+                                    name="RequestedLoanAmount"
+                                    component="input"
+                                    type="number"
+                                    min={500} max={20000}
+                                    required
+                                    valueMissing="Privaloma"
+                                    rangeUnderflow="Suma per maža"
+                                    rangeOverflow="Suma per didelė" />
                                 <label htmlFor="RequestedLoanAmountNumber" className="label">Eur</label>
                             </div>
                         </div>
@@ -136,7 +147,7 @@ const App = () => (
 
                     <div className="step">
                         <div className="step-title">
-                            <ConditionalTitle form="creditCounter"/>
+                            <ConditionalTitle form="creditCounter" />
                             <Tip classTitle={"tip"} overlay={"Toliau prašome pateikti informaciją apie bendras savo ir bendraskolio pajamas."} />
                         </div>
                         <div className="step-range">
@@ -153,7 +164,18 @@ const App = () => (
                             </div>
 
                             <div className="step-text-container month">
-                                <Field id="NetMonthlyIncomeNumber" parse={normalizeInput} className="cur-value" name="NetMonthlyIncome" component="input" type="number" min={245} max={3000} required />
+                                <Field
+                                    id="NetMonthlyIncomeNumber"
+                                    parse={normalizeInput}
+                                    className="cur-value"
+                                    name="NetMonthlyIncome"
+                                    component="input"
+                                    type="number"
+                                    min={245} max={3000}
+                                    required
+                                    valueMissing="Privaloma"
+                                    rangeUnderflow="Pajamos per mažos"
+                                    rangeOverflow="Pajamos per didelės" />
                                 <label htmlFor="NetMonthlyIncomeNumber" className="label">Eur/mėn</label>
                             </div>
                         </div>
@@ -172,7 +194,17 @@ const App = () => (
                                     </div>
                                 </div>
                                 <div className="step-text-container month">
-                                    <Field parse={normalizeInput} className="cur-value" name="SpouseNetMonthlyIncome" value="0" component="input" type="number" min={0} max={3000} required />
+                                    <Field
+                                        parse={normalizeInput}
+                                        className="cur-value"
+                                        name="SpouseNetMonthlyIncome"
+                                        value="0" component="input"
+                                        type="number"
+                                        min={0} max={3000}
+                                        required
+                                        valueMissing="Privaloma"
+                                        rangeUnderflow="Pajamos per mažos"
+                                        rangeOverflow="Pajamos per didelės" />
                                     <label className="label">Eur/mėn</label>
                                 </div>
                             </div>
@@ -226,7 +258,17 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field parse={normalizeInput} className="cur-value" name="AmountOfConsumerProducts" component="input" type="number" min={0} max={30000} required />
+                                    <Field
+                                        parse={normalizeInput}
+                                        className="cur-value"
+                                        name="AmountOfConsumerProducts"
+                                        component="input"
+                                        type="number"
+                                        min={0} max={30000}
+                                        required
+                                        valueMissing="Privaloma"
+                                        rangeUnderflow="Suma per maža"
+                                        rangeOverflow="Suma per didelė" />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -245,7 +287,17 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field parse={normalizeInput} className="cur-value" name="AmountOfHousingProducts" component="input" type="number" min={0} max={870000} required />
+                                    <Field
+                                        parse={normalizeInput}
+                                        className="cur-value"
+                                        name="AmountOfHousingProducts"
+                                        component="input"
+                                        type="number"
+                                        min={0} max={870000}
+                                        required
+                                        valueMissing="Privaloma"
+                                        rangeUnderflow="Suma per maža"
+                                        rangeOverflow="Suma per didelė" />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -264,7 +316,16 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container up">
-                                    <Field parse={normalizeInput} className="cur-value" name="AmountOfLeasingProducts" component="input" type="number" min={0} max={145000} required />
+                                    <Field
+                                        parse={normalizeInput}
+                                        className="cur-value"
+                                        name="AmountOfLeasingProducts"
+                                        component="input" type="number"
+                                        min={0} max={145000}
+                                        required
+                                        valueMissing="Privaloma"
+                                        rangeUnderflow="Suma per maža"
+                                        rangeOverflow="Suma per didelė" />
                                     <label className="label">Eur</label>
                                 </div>
                             </div>
@@ -283,10 +344,20 @@ const App = () => (
                                 </div>
 
                                 <div className="step-text-container month up">
-                                    <Field parse={normalizeInput} className="cur-value" name="MonthlyObligationsPayment" component="input" type="number" min={0} max={7000} required />
+                                    <Field
+                                        parse={normalizeInput}
+                                        className="cur-value"
+                                        name="MonthlyObligationsPayment"
+                                        component="input"
+                                        type="number"
+                                        min={0} max={7000}
+                                        required
+                                        valueMissing="Privaloma"
+                                        rangeUnderflow="Suma per maža"
+                                        rangeOverflow="Suma per didelė" />
                                     <label className="label">Eur/mėn</label>
                                     <ProductsError name="AmountOfConsumerProducts" />
-                                 </div>
+                                </div>
                             </div>
 
                             <div className='errors-container'>
