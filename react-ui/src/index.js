@@ -9,6 +9,7 @@ import Tip from './Components/Tooltip.js'
 import { Provider } from 'react-redux'
 import store from './store'
 import RangeSlider from './Components/RangeSlider'
+import ConditionTitle from './Components/ConditionTitle'
 
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
@@ -39,6 +40,7 @@ const Condition = ({ when, is, children }) => (
         {({ input: { value } }) => (value === is ? children : null)}
     </Field>
 );
+
 
 const normalizeInput = value => {
     if (!value) return value
@@ -134,7 +136,7 @@ const App = () => (
 
                     <div className="step">
                         <div className="step-title">
-                            <h2>Informacija apie jūsų pajamas</h2>
+                            <ConditionTitle form="creditCounter"/>
                             <Tip classTitle={"tip"} overlay={"Toliau prašome pateikti informaciją apie bendras savo ir bendraskolio pajamas."} />
                         </div>
                         <div className="step-range">
