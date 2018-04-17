@@ -87,6 +87,7 @@ export default styled.div`
           margin-right: -10px;
           align-self: flex-start;
           margin-top: calc(5px / 2);
+          z-index: 10;
           @media (max-width: 735px) {
             margin-right: 5px;
             align-self: flex-start;
